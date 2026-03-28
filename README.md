@@ -28,6 +28,14 @@ docker exec -it kafka bash
 
 ---
 
+## Go to Kafka binaries
+
+```bash
+cd /opt/kafka/bin
+```
+
+---
+
 ## Create Topic
 
 ```bash
