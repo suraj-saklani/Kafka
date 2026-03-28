@@ -1,8 +1,10 @@
 Step 1: Start Kafka using Docker Compose
+
   Make sure you are in the root of the repository where the compose file is present.
   docker-compose -f kafka-compose.yml up -d
 
 Step 2: Access the Kafka container
+  
   docker exec -it kafka bash
   
   Then go to Kafka binaries:
