@@ -1,29 +1,55 @@
-Step 1: Start Kafka using Docker Compose
+# Kafka Quick Start with Docker
 
-  Make sure you are in the root of the repository where the compose file is present.
-  docker-compose -f kafka-compose.yml up -d
+This repository provides a simple setup to run Kafka locally using Docker Compose and test producers and consumers.
 
-Step 2: Access the Kafka container
-  
-  docker exec -it kafka bash
-  
-  Then go to Kafka binaries:
-  cd /opt/kafka/bin
+---
 
-Step 3: Create a topic
-  ./kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+## Prerequisites
 
-Step 4: Start a producer
+- Docker installed
 
-  ./kafka-console-producer.sh --topic orders --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=:"
+---
 
-  You can send messages like:
-  order1:created
-  order2:processed
+## Start Kafka
 
-Step 5: Start a consumer
-  ./kafka-console-consumer.sh --topic orders --bootstrap-server localhost:9092 --from-beginning --property print.partition=true --property print.offset=true --property print.key=true
+Run the following command from the root of the repository:
 
-This setup is useful to quickly understand how Kafka works with topics, partitions, keys, and offsets without any complex setup.
+```bash
+docker-compose -f kafka-compose.yml up -d
+```
 
-You can clone the repository, run one command, and start experimenting with Kafka locally.
+---
+
+## Access Kafka Container
+
+```bash
+docker exec -it kafka bash
+```
+
+---
+
+## Create Topic
+
+```bash
+./kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+```
+
+## Start Producer
+
+Message with keyseprator as ":" 
+
+```bash
+./kafka-console-producer.sh --topic orders --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=:"
+```
+
+Type message which we want to send to topic for example: 
+
+order1:created
+
+order2:processed
+
+## Start Consumer
+
+```bash
+./kafka-console-consumer.sh --topic orders --bootstrap-server localhost:9092 --from-beginning --property print.partition=true --property print.offset=true --property print.key=true
+```
