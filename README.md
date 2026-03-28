@@ -58,6 +58,16 @@ order2:processed
 
 ## Start Consumer
 
+In new terminal
+
+```bash
+docker exec -it kafka bash
+```
+
+```bash
+cd /opt/kafka/bin
+```
+
 ```bash
 ./kafka-console-consumer.sh --topic orders --bootstrap-server localhost:9092 --from-beginning --property print.partition=true --property print.offset=true --property print.key=true
 ```
